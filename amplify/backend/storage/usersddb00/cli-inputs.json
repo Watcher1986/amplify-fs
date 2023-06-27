@@ -1,0 +1,16 @@
+{
+  "resourceName": "usersddb00",
+  "tableName": "usersddb00",
+  "partitionKey": {
+    "fieldName": "user_id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "user_surname",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "usersddb00Trigger0ee020bf"
+  ]
+}

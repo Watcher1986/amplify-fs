@@ -1,0 +1,95 @@
+{
+  "api": {
+    "users01": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "root"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "root": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "usersddb00"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "usersddb00Trigger0ee020bf": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "usersddb00"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_root_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "root"
+        }
+      ]
+    },
+    "AMPLIFY_function_root_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "root"
+        }
+      ]
+    },
+    "AMPLIFY_function_usersddb00Trigger0ee020bf_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersddb00Trigger0ee020bf"
+        }
+      ]
+    },
+    "AMPLIFY_function_usersddb00Trigger0ee020bf_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "usersddb00Trigger0ee020bf"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "usersddb00": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}
